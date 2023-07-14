@@ -1,0 +1,24 @@
+# fly.toml app configuration file generated for pingerpongertest on 2023-07-13T10:27:46-06:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "pingerpongertest"
+primary_region = "iad"
+
+[processes]
+  ponger = "/node -type=ponger"
+  pinger = "/node -to=ponger.process.pingerpongertest.internal"
+
+[[services]]
+  internal_port = 10000
+  protocol = "tcp"
+  processes = ["ponger"]
+[[services]]
+  internal_port = 10001
+  protocol = "tcp"
+  processes = ["ponger"]
+[[services]]
+  internal_port = 10002
+  protocol = "tcp"
+  processes = ["ponger"]

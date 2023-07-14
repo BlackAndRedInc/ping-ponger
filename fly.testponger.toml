@@ -1,0 +1,23 @@
+# fly.testponger.toml app configuration file generated for testponger on 2023-07-12T13:47:55-06:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "testponger"
+primary_region = "iad"
+
+[processes]
+  app = "/node -type=ponger"
+
+[[services]]
+  internal_port = 10000
+  protocol = "tcp"
+  processes = ["app"]
+[[services]]
+  internal_port = 10001
+  protocol = "tcp"
+  processes = ["app"]
+[[services]]
+  internal_port = 10002
+  protocol = "tcp"
+  processes = ["app"]
